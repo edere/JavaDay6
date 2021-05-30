@@ -14,7 +14,7 @@ public class EmployerManager implements IEmployerService {
 		this.employerDal = employerDal; 
 	}
 	@Override
-	public void add() {
+	public void add(Employer employer) {
 		
 		System.out.println("İşveren başarıyla eklendi.");
 	}

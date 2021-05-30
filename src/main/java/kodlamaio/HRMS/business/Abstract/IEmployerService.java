@@ -6,7 +6,7 @@ import kodlamaio.HRMS.entities.Concrete.Employer;
 
 public interface IEmployerService {
 
-	public void add();
+	public void add(Employer employer);
 
 	public void delete();
 

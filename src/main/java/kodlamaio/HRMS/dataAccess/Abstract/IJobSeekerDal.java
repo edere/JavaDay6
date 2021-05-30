@@ -6,4 +6,5 @@ import kodlamaio.HRMS.entities.Concrete.JobSeeker;
 
 public interface IJobSeekerDal extends JpaRepository<JobSeeker, Integer>{
 
+	JobSeeker findByidentityNumber(String identityId);
 }

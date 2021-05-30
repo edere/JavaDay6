@@ -3,6 +3,8 @@ package kodlamaio.HRMS.business.Concrete;
 import java.util.List;
 
 import kodlamaio.HRMS.business.Abstract.IJobSeekerService;
+import kodlamaio.HRMS.core.result.DataResult;
+import kodlamaio.HRMS.core.result.SuccessDataResult;
 import kodlamaio.HRMS.dataAccess.Abstract.IJobSeekerDal;
 import kodlamaio.HRMS.entities.Concrete.JobSeeker;
 
@@ -15,7 +17,7 @@ public class JobSeekerManager implements IJobSeekerService {
 	}
 	
 	@Override
-	public void Add() {
+	public void Add(JobSeeker jobSeeker) {
 		System.out.println("Kullanıcı başarıyla eklendi.");
 		
 	}
@@ -36,6 +38,13 @@ public class JobSeekerManager implements IJobSeekerService {
 	public List<JobSeeker> getAll() {
 		
 		return this.jobSeekerDal.findAll();
+	}
+
+
+	@Override
+	public DataResult<JobSeeker> getIdentityNumber(String identityNumber) {
+		
+		return new SuccessDataResult<JobSeeker>(this.jobSeekerDal.findByidentityNumber(identityNumber));
 	}
 
 }
