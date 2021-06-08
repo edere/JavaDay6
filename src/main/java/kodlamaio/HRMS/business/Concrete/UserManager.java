@@ -2,14 +2,22 @@ package kodlamaio.HRMS.business.Concrete;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import kodlamaio.HRMS.business.Abstract.IUserService;
-import kodlamaio.HRMS.dataAccess.Abstract.IUserDal;
+import kodlamaio.HRMS.core.result.DataResult;
+import kodlamaio.HRMS.core.result.SuccessDataResult;
+import kodlamaio.HRMS.dataAccess.Abstract.IUserDao;
+import kodlamaio.HRMS.entities.Concrete.Employer;
 import kodlamaio.HRMS.entities.Concrete.User;
 
+@Service
 public class UserManager implements IUserService{
 
-	private IUserDal userdal;
-	public UserManager(IUserDal userdal) {
+	private IUserDao userdal;
+	@Autowired
+	public UserManager(IUserDao userdal) {
 		this.userdal = userdal;
 	}
 	
@@ -32,9 +40,9 @@ public class UserManager implements IUserService{
 	}
 
 	@Override
-	public List<User> getAll() {
-		
-		return this.userdal.findAll();
+	public DataResult<List<User>> getAll() {
+		return new SuccessDataResult<List<User>>(this.userdal.findAll());
+
 	}
 
 }

@@ -2,6 +2,7 @@ package kodlamaio.HRMS.business.Abstract;
 
 import java.util.List;
 
+import kodlamaio.HRMS.core.result.DataResult;
 import kodlamaio.HRMS.entities.Concrete.User;
 
 public interface IUserService {
@@ -12,7 +13,7 @@ public interface IUserService {
 	
 	public void update();
 	
-	public List<User> getAll();
+	public DataResult<List<User>> getAll();
 	
 }
 

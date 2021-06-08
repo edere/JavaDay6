@@ -1,24 +1,33 @@
 package kodlamaio.HRMS.business.Concrete;
 
+
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import kodlamaio.HRMS.business.Abstract.IJobSeekerService;
 import kodlamaio.HRMS.core.result.DataResult;
+import kodlamaio.HRMS.core.result.Result;
 import kodlamaio.HRMS.core.result.SuccessDataResult;
-import kodlamaio.HRMS.dataAccess.Abstract.IJobSeekerDal;
+import kodlamaio.HRMS.core.result.SuccessResult;
+import kodlamaio.HRMS.dataAccess.Abstract.IJobSeekerDao;
 import kodlamaio.HRMS.entities.Concrete.JobSeeker;
 
+@Service
 public class JobSeekerManager implements IJobSeekerService {
 
-	private IJobSeekerDal jobSeekerDal;
+	private IJobSeekerDao jobSeekerDao;
 	
-	public JobSeekerManager(IJobSeekerDal jobSeekerDal) {
-		this.jobSeekerDal =jobSeekerDal;
+	@Autowired
+	public JobSeekerManager(IJobSeekerDao jobSeekerDao) {
+		this.jobSeekerDao =jobSeekerDao;
 	}
 	
 	@Override
-	public void Add(JobSeeker jobSeeker) {
-		System.out.println("Kullanıcı başarıyla eklendi.");
+	public 	Result Add(JobSeeker jobSeeker) {
+		this.jobSeekerDao.save(jobSeeker);
+		return new SuccessResult("Kullanıcı başarıyla eklendi.");
 		
 	}
 
@@ -35,16 +44,16 @@ public class JobSeekerManager implements IJobSeekerService {
 	}
 
 	@Override
-	public List<JobSeeker> getAll() {
+	public DataResult<List<JobSeeker>> getAll() {
 		
-		return this.jobSeekerDal.findAll();
+		return new SuccessDataResult<List<JobSeeker>>(this.jobSeekerDao.findAll());
 	}
 
 
 	@Override
 	public DataResult<JobSeeker> getIdentityNumber(String identityNumber) {
 		
-		return new SuccessDataResult<JobSeeker>(this.jobSeekerDal.findByidentityNumber(identityNumber));
+		return new SuccessDataResult<JobSeeker>(this.jobSeekerDao.findByidentityNumber(identityNumber));
 	}
 
 }

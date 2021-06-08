@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import kodlamaio.HRMS.entities.Concrete.JobPosition;
 
-public interface IJobPositionDal extends JpaRepository<JobPosition, Integer> {
+public interface IJobPositionDao extends JpaRepository<JobPosition, Integer> {
 	
 }

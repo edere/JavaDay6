@@ -2,21 +2,29 @@ package kodlamaio.HRMS.business.Concrete;
 
 import java.util.List;
 
-import kodlamaio.HRMS.business.Abstract.IEmployerService;
-import kodlamaio.HRMS.dataAccess.Abstract.IEmployerDal;
-import kodlamaio.HRMS.entities.Concrete.Employer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import kodlamaio.HRMS.business.Abstract.IEmployerService;
+import kodlamaio.HRMS.core.result.DataResult;
+import kodlamaio.HRMS.core.result.Result;
+import kodlamaio.HRMS.core.result.SuccessDataResult;
+import kodlamaio.HRMS.core.result.SuccessResult;
+import kodlamaio.HRMS.dataAccess.Abstract.IEmployerDao;
+import kodlamaio.HRMS.entities.Concrete.Employer;
+@Service
 public class EmployerManager implements IEmployerService {
 
-	private IEmployerDal employerDal;
+	private IEmployerDao employerDao;
 	
-	public EmployerManager(IEmployerDal employerDal) {
-		this.employerDal = employerDal; 
+	@Autowired
+	public EmployerManager(IEmployerDao employerDao) {
+		this.employerDao=employerDao; 
 	}
 	@Override
-	public void add(Employer employer) {
-		
-		System.out.println("İşveren başarıyla eklendi.");
+	public Result add(Employer employer) {
+		this.employerDao.save(employer);
+		return new SuccessResult("İşveren başarıyla eklendi.");
 	}
 
 	@Override
@@ -31,8 +39,8 @@ public class EmployerManager implements IEmployerService {
 	}
 
 	@Override
-	public List<Employer> getAll() {
-		return this.employerDal.findAll();
+	public DataResult<List<Employer>> getAll() {
+		return new SuccessDataResult<List<Employer>>(this.employerDao.findAll());
 	}
 
 }

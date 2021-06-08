@@ -2,8 +2,8 @@ package kodlamaio.HRMS.dataAccess.Abstract;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import kodlamaio.HRMS.entities.Concrete.User;
+import kodlamaio.HRMS.entities.Concrete.City;
 
-public interface IUserDal  extends JpaRepository<User, Integer>{ 
+public interface ICityDao extends JpaRepository<City, Integer> {
 
 }

@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import kodlamaio.HRMS.entities.Concrete.Personel;
 
-public interface IPersonelDal  extends JpaRepository<Personel, Integer>{
+public interface IPersonelDao  extends JpaRepository<Personel, Integer>{
 
 }

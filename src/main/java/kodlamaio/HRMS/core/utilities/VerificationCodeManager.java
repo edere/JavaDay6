@@ -2,7 +2,10 @@ package kodlamaio.HRMS.core.utilities;
 
 import java.util.UUID;
 
-public class VerificationManager implements IVerificationUtiliesService{
+import org.springframework.stereotype.Service;
+
+@Service
+public class VerificationCodeManager implements IVerificationUtiliesService{
 
 	@Override
 	public void sendMailLink(String email) {

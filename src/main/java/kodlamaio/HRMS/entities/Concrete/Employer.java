@@ -10,14 +10,13 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@EqualsAndHashCode(callSuper = true)
+
 @Data
 @Entity
-@Table(name = "employers", uniqueConstraints = {@UniqueConstraint(columnNames = {"company_name"})})
+@Table(name = "employers")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+
 public class Employer extends User {
 
     @Id

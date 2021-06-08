@@ -1,7 +1,10 @@
 package kodlamaio.HRMS.core.adapters;
 
+import org.springframework.stereotype.Service;
+
 import kodlamaio.HRMS.services.FakeMernis;
 
+@Service
 public class MernisService implements IValidationService{
 
 	@Override

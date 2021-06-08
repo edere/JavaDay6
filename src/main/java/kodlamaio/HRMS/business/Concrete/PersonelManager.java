@@ -2,17 +2,21 @@ package kodlamaio.HRMS.business.Concrete;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import kodlamaio.HRMS.business.Abstract.IPersonelService;
-import kodlamaio.HRMS.dataAccess.Abstract.IPersonelDal;
+import kodlamaio.HRMS.dataAccess.Abstract.IPersonelDao;
 import kodlamaio.HRMS.entities.Concrete.Personel;
 
+@Service
 public class PersonelManager implements IPersonelService{
 
-	private IPersonelDal personelDal;
+	private IPersonelDao personelDao;
 	
-	public PersonelManager(IPersonelDal personelDal) {
-		this.personelDal = personelDal;
+	@Autowired
+	public PersonelManager(IPersonelDao personelDao) {
+		this.personelDao = personelDao;
 	}
 
 	@Override
@@ -34,6 +38,6 @@ public class PersonelManager implements IPersonelService{
 
 	@Override
 	public List<Personel> getAll() {
-		return this.personelDal.findAll();
+		return this.personelDao.findAll();
 	}
 }
