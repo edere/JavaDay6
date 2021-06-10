@@ -17,4 +17,5 @@ public interface IJobSeekerService {
 	public DataResult<List<JobSeeker>> getAll();
 
 	DataResult<JobSeeker> getIdentityNumber(String identityNumber);
+	DataResult<JobSeeker> getBy_Id(int id);	
 }
